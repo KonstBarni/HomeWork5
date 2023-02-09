@@ -6,7 +6,7 @@ using namespace std;
      /* конструкторы*/
 Snack::Snack()
 {
-    string NameChoc = "null";
+    string NameChoc = "nullptr";
     Colories = 0;
     Price = 0;
 
@@ -24,12 +24,32 @@ Snack::Snack(string name, double cols, double price)
     Price = price;
 }
     /* геттеры */
-void Snack::getSnack(string name, double cols, double price)
+string Snack::getSnackName()
 {
-    name = NameChoc;
-    cols = Colories;
-    price = Price;
+    return NameChoc;
 }
+double Snack::getSnackCols()
+{
+    return Colories;
+}
+double Snack::getSnackPrice()
+{
+    return Price;
+}
+    /*сеттеры*/
+void Snack::setSnackName(string name)
+{
+    NameChoc = name;
+}
+void Snack::setSnackCols(double cols)
+{
+    Colories = cols;
+}   
+void Snack::setSnackPrice(double price)
+{
+    Price = price;
+}      
+    /*Вывод полей в консоль*/
 void Snack::PrintField()
 {
     cout << NameChoc << "\t" << Colories << "\t" << Price << endl;

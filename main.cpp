@@ -10,17 +10,14 @@ int main()
   Snack *Bounty = new Snack("Bouny", 5, 35.56);
   Bounty->PrintField();
   Snack *Snickers = new Snack("Snickecrs", 7, 56.78);
+  Snickers->setSnackName("SuperSnickers");
   Snickers->PrintField();
   Snack *Mars = new Snack("Mars");
   Mars->PrintField();
-  SnackSlot *slot = new SnackSlot(10);
-  for(int i = 0; i <=10; ++i)
-  {
-    slot[i].printSlot();
-  }
- 
+  SnackSlot slot[10];
+  slot->printSlot();
 
-  delete slot;
+
   delete Bounty;
   delete Snickers;
   delete Mars;
