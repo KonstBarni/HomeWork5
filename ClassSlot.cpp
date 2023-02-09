@@ -1,11 +1,11 @@
 #include "ClassSlot.h"
 #include "ClassSnack.h"
 
-SnackSlot::SnackSlot()
+SnackSlot::SnackSlot(unsigned short num)
 {
-    unsigned short naxSnc = 10;
-    unsigned short numSnk = 0;
-    Snack slot[maxSnc];
+    unsigned short maxSnc = num;
+    unsigned short numSnc = 0;
+    Snack **sl[] = Snack*[maxSnc]{Snack bn};
 }
 
         /*методы доступа*/
@@ -18,4 +18,8 @@ void SnackSlot::printSlot()
 {
     Snack slot;
     slot.PrintField();
+}
+SnackSlot::~SnackSlot()
+{
+    delete[] sl;
 }
