@@ -5,20 +5,18 @@ class SnackSlot
 {
 private:
     unsigned short maxSnc;
-    unsigned short numSnk;
-   // Snack slot[];    //number of snacs in the slot 
-    Snack **sl[];
+    unsigned short numSnc;
+    Snack **slot[];                
 public:
-    SnackSlot();
+    SnackSlot(unsigned short num);
 
         /*операторы доступа*/
-    SnackSlot getSlotPos(short index);
-    void setSlotPos(short index, Snack Sn);
+    Snack getSlotPos(unsigned short);
+    void setSlotPos(short index);
 
-    SnackSlot SetSlot(int index, Snack _S); //setter slot
-    void printSlot();
+    void addSnack(Snack);
+    void printSlot();         // Вывод одного элемента слота
 
-    ~SnackSlot();
 };
 
 

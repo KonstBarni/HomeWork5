@@ -21,6 +21,7 @@ public:
     void setSnackName(string name);
     void setSnackCols(double cols);
     void setSnackPrice(double price);
+    void setAll(string name, double cols, double price);
 
     void PrintField();
     

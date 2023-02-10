@@ -14,8 +14,12 @@ int main()
   Snickers->PrintField();
   Snack *Mars = new Snack("Mars");
   Mars->PrintField();
+  SnackSlot *slot1 = new SnackSlot(10);
+  slot1->printSlot();
+  //slot1->addSnack(Mars);
 
 
+  delete slot1;
   delete Bounty;
   delete Snickers;
   delete Mars;

@@ -36,6 +36,7 @@ double Snack::getSnackPrice()
 {
     return Price;
 }
+
     /*сеттеры*/
 void Snack::setSnackName(string name)
 {
@@ -48,7 +49,13 @@ void Snack::setSnackCols(double cols)
 void Snack::setSnackPrice(double price)
 {
     Price = price;
-}      
+}   
+void Snack::setAll(string name, double cols, double price)
+{
+    NameChoc = name;
+    Colories = cols;
+    Price = price;
+}   
     /*Вывод полей в консоль*/
 void Snack::PrintField()
 {
