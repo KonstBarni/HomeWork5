@@ -6,71 +6,72 @@ using namespace std;
      /* конструкторы*/
 Snack::Snack()
 {
-    string NameChoc = "nullptr";
-    Colories = 0;
-    Price = 0;
+    string nameChoc = "nullptr";
+    colories = 0;
+    priceCh = 0;
 
 }
-Snack::Snack(string name)
+Snack::Snack(const string& name)
 {
-    NameChoc = name;
-    Colories = 225;
-    Price = 15,5;
+    nameChoc = name;
+    colories = 225;
+    priceCh = 15,5;
 }
-Snack::Snack(string name, double cols, double price)
+Snack::Snack(const string& name, double cols, double price)
 {
-    NameChoc = name;
-    Colories = cols;
-    Price = price;
+    nameChoc = name;
+    colories = cols;
+    priceCh = price;
 }
     /* геттеры */
 string Snack::getSnackName()
 {
-    return NameChoc;
+    return nameChoc;
 }
 double Snack::getSnackCols()
 {
-    return Colories;
+    return colories;
 }
 double Snack::getSnackPrice()
 {
-    return Price;
+    return priceCh;
 }
 
     /*сеттеры*/
-void Snack::setSnackName(string name)
+void Snack::setSnackName(const string& name)
 {
-    NameChoc = name;
+    nameChoc = name;
 }
 void Snack::setSnackCols(double cols)
 {
-    Colories = cols;
+    colories = cols;
 }   
 void Snack::setSnackPrice(double price)
 {
-    Price = price;
+    priceCh = price;
 }   
-void Snack::setAll(string name, double cols, double price)
+void Snack::setAll(const string& name, double cols, double price)
 {
-    NameChoc = name;
-    Colories = cols;
-    Price = price;
+    nameChoc = name;
+    colories = cols;
+    priceCh = price;
 }   
     /*Вывод полей в консоль*/
 void Snack::PrintField()
 {
-    cout << NameChoc << "\t" << Colories << "\t" << Price << endl;
+    cout << nameChoc << "\t" << colories << "\t" << priceCh << endl;
 }
 
     /*Конструктор копирования*/
 
 Snack::Snack(const Snack &other)
     {
-       NameChoc = other.NameChoc;
-       Colories = other.Colories;
-       Price = other.Price;
+       nameChoc = other.nameChoc;
+       colories = other.colories;
+       priceCh = other.priceCh;
     }
     
 Snack::~Snack()
 {   
+    cout<<"destructor Snake"<<endl;
 }

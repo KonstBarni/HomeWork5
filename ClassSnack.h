@@ -1,31 +1,30 @@
 #pragma once
-#include <iostream>
 #include <string>
 using namespace std;
 
 class Snack
 {
 private:
-    string NameChoc;
-    double Colories;
-    double Price;
+    string nameChoc;
+    double colories;
+    double priceCh;
 public:
-    Snack();
-    Snack(string name);
-    Snack(string name, double cols, double price);
+    Snack();                                        //конструкторы
+    Snack(const string& name);
+    Snack(const string& name, double cols, double price);
 
-    string getSnackName();
+    string getSnackName();                          //геттеры
     double getSnackCols();
     double getSnackPrice();
 
-    void setSnackName(string name);
+    void setSnackName(const string& name);          //сеттеры
     void setSnackCols(double cols);
     void setSnackPrice(double price);
-    void setAll(string name, double cols, double price);
+    void setAll(const string& name, double cols, double price);
 
-    void PrintField();
+    void PrintField();                              //вывод в консоль всех полей
     
-    Snack(const Snack& other);
+    Snack(const Snack& other);                      //конструктор копирования
     ~Snack();
 
 };

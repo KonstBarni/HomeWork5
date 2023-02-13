@@ -9,20 +9,27 @@ int main()
 {
   Snack *Bounty = new Snack("Bouny", 5, 35.56);
   Bounty->PrintField();
-  Snack *Snickers = new Snack("Snickecrs", 7, 56.78);
+  Snack *Snickers = new Snack("mickecrs", 7, 56.78);
   Snickers->setSnackName("SuperSnickers");
-  Snickers->PrintField();
   Snack *Mars = new Snack("Mars");
+  Mars->setAll("Kamaz", 456.76, 855.676);
   Mars->PrintField();
-  SnackSlot *slot1 = new SnackSlot(10);
-  slot1->printSlot();
-  //slot1->addSnack(Mars);
+  SnackSlot *slot = new SnackSlot(10);
+  Snickers->PrintField();
 
+  //slot->setSlotSncName("Super", 4);
+  //cout<<slot[1].getSlotPos(3)<<endl;
 
-  delete slot1;
+  
+  for(int i =0; i< 10; i++)
+   {
+     slot->printSlot();
+   }
+
   delete Bounty;
   delete Snickers;
   delete Mars;
+  //delete[] slot;
 
   return 0;
 }
