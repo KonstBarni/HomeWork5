@@ -6,7 +6,7 @@ using namespace std;
      /* конструкторы*/
 Snack::Snack()
 {
-    string nameChoc = "nullptr";
+    nameChoc = "nullptr";
     colories = 0;
     priceCh = 0;
 
@@ -70,8 +70,7 @@ Snack::Snack(const Snack &other)
        colories = other.colories;
        priceCh = other.priceCh;
     }
-    
+     
 Snack::~Snack()
 {   
-    cout<<"destructor Snake"<<endl;
 }

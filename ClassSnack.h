@@ -9,8 +9,8 @@ private:
     double colories;
     double priceCh;
 public:
-    Snack();                                        //конструкторы
-    Snack(const string& name);
+    Snack();                         
+    Snack(const string& name);                      //конструкторы
     Snack(const string& name, double cols, double price);
 
     string getSnackName();                          //геттеры

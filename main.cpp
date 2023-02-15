@@ -12,24 +12,23 @@ int main()
   Snack *Snickers = new Snack("mickecrs", 7, 56.78);
   Snickers->setSnackName("SuperSnickers");
   Snack *Mars = new Snack("Mars");
-  Mars->setAll("Kamaz", 456.76, 855.676);
+  Mars->setAll("MarsMax", 456.76, 855.676);
   Mars->PrintField();
-  SnackSlot *slot = new SnackSlot(10);
   Snickers->PrintField();
+  SnackSlot *slot = new SnackSlot(10);
 
-  //slot->setSlotSncName("Super", 4);
-  //cout<<slot[1].getSlotPos(3)<<endl;
+  slot->addSnack(Bounty);
+  slot->addSnack(Mars);
+  slot->addSnack(Mars);
+  slot->addSnack(Mars);
+  slot->addSnack(Mars);
+  slot->printSlot();
+  slot->printInfo();
 
-  
-  for(int i =0; i< 10; i++)
-   {
-     slot->printSlot();
-   }
-
+  //delete[] slot;
   delete Bounty;
   delete Snickers;
   delete Mars;
-  //delete[] slot;
 
   return 0;
 }

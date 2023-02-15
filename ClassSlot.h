@@ -6,22 +6,24 @@ class SnackSlot
 private:
     unsigned short maxSnc;
     unsigned short numSnc;
-    Snack *arrSnc; 
-    SnackSlot();               
+    Snack **arrSnc; 
+                  
 public:
-    
-    SnackSlot(unsigned short num);
-    SnackSlot(unsigned short num, Snack _arrSnc[]);
+    SnackSlot(); 
+    SnackSlot(unsigned short size);
     SnackSlot(const SnackSlot& other);       //конструктор копирования
 
-    SnackSlot& operator=(const SnackSlot& slot);  // перегрузка =
+    SnackSlot& operator=(const SnackSlot& _arr);  // перегрузка =
 
         /*операторы доступа*/
     string getSlotPos(unsigned short);
+    unsigned short getmaxSnc();
     void setSlotSncName(const string&, int index);
 
-    void addSnack(Snack);
-    void printSlot();         // Вывод одного элемента слота
+    void addSnack(Snack(*Snack));       //добавить снек в слот
+    void printSlot();                   // Вывод всех элементов слота
+    void printInfo();                   //инфо о слоте
+    
     ~SnackSlot();
 
 };
