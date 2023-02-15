@@ -31,7 +31,8 @@ SnackSlot::SnackSlot(const SnackSlot& otherArr)     //конструктор к�
     arrSnc = new Snack* [otherArr.maxSnc];
     for(int i =0; i<otherArr.maxSnc; i++)
     {
-        arrSnc[i] = otherArr.arrSnc[i];
+        Snack *sn = new Snack();
+        otherArr.arrSnc[i] = sn;
     }
     numSnc = otherArr.numSnc;
 }   

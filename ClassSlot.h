@@ -23,7 +23,7 @@ public:
     void addSnack(Snack(*Snack));       //добавить снек в слот
     void printSlot();                   // Вывод всех элементов слота
     void printInfo();                   //инфо о слоте
-    
+
     ~SnackSlot();
 
 };

@@ -6,10 +6,13 @@ class VendingMashine
 {
     unsigned short maxSlots;
     unsigned short slotCount;
-    VendingMashine **box;
+    unsigned short sltSize; 
+    SnackSlot **mashine;
 public:
     VendingMashine();
     VendingMashine(unsigned short);
+    VendingMashine(const VendingMashine& otherMash);            //copy ctor
+    VendingMashine& operator=(const VendingMashine& _mash);     // owerload operator =
 
     ~VendingMashine();
 };
