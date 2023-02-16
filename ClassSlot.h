@@ -18,7 +18,7 @@ public:
         /*операторы доступа*/
     string getSlotPos(unsigned short);
     unsigned short getmaxSnc();
-    void setSlotSncName(const string&, int index);
+    void setSlotSncName(const string&, int index);      //задает имя снека по индексу
 
     void addSnack(Snack(*Snack));       //добавить снек в слот
     void printSlot();                   // Вывод всех элементов слота

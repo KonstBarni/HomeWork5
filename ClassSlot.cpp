@@ -94,5 +94,4 @@ void SnackSlot::printInfo()            //выводит макс. количес
 
 SnackSlot::~SnackSlot(){
     delete[] arrSnc;
-    cout<<"destrucktor Slot"<<endl;
 }
