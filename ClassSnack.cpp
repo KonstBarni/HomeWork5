@@ -59,7 +59,7 @@ void Snack::setAll(const string& name, double cols, double price)
     /*Вывод полей в консоль*/
 void Snack::PrintField()
 {
-    cout << nameChoc << "\t" << colories << "\t" << priceCh << endl;
+    cout << nameChoc << "\t" << colories << "\t" << priceCh  << endl;
 }
 
     /*Конструктор копирования*/

@@ -7,7 +7,7 @@
 using namespace std;
 
 int main()
-{               /*роверка Snack*/
+{               /*проверка Snack*/
   Snack *Bounty = new Snack("Bouny", 5, 35.56);
   Bounty->PrintField();
   Snack *Snickers = new Snack("mickecrs", 7, 56.78);
@@ -25,15 +25,29 @@ int main()
   slot->addSnack(Mars);
   slot->addSnack(Mars);
   slot->addSnack(Mars);
-  // slot->printSlot();
-  // slot->printInfo();
+  slot->addSnack(Snickers);
+  slot->printSlot();
+  slot->printInfo();
+
+  SnackSlot *slot2 = new SnackSlot(10);
+  slot2->addSnack(Bounty);
+  slot2->addSnack(Bounty);
+  slot2->addSnack(Snickers);
+  slot2->addSnack(Snickers);
+  slot2->addSnack(Snickers);
+  slot2->printSlot();
+  slot2->printInfo();
 
             /*проверка vendingMashine*/
-  VendingMashine *mashine = new VendingMashine(5);
-  cout<< "in mashin: " << mashine->getSlotCount() <<endl;
+  VendingMashine *mashine = new VendingMashine(3);
+  mashine->slotAdd(slot);
+  mashine->slotAdd(slot2);
+  //cout << "\n" << "in mashin: " << mashine->getSlotCount() << endl;
+  //mashine->printAllSlots();
+  cout << "Всего свободно: "<< mashine->getEmptySlotsCount()<< endl;
 
-  //delete[] mashine;
-  //delete[] slot;
+  delete mashine;
+  delete slot;
   delete Bounty;
   delete Snickers;
   delete Mars;

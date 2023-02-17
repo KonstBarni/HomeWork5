@@ -7,8 +7,9 @@ class VendingMashine
     unsigned short maxSize;
     unsigned short slotCount;
     unsigned short sltSize;
-    unsigned short mashine; 
-    Snack **mashArr;
+    unsigned short mashine;
+    SnackSlot **mashArr; 
+    
 public:
     VendingMashine();
     VendingMashine(unsigned short);
@@ -16,7 +17,11 @@ public:
     VendingMashine& operator=(const VendingMashine& _mash);     // owerload operator =
 
     unsigned short getSlotCount();                              //возвращает slotCount
-    void slotAdd();
+    unsigned short getEmptySlotsCount();                        //возвращает кол-во пустых слотов
+    SnackSlot getOneSlot(int n);                                //возвращает один слот по номеру
+
+    void printAllSlots();
+    void slotAdd(SnackSlot (*SnackSlot));
 
     ~VendingMashine();
 };

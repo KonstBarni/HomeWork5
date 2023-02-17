@@ -10,76 +10,102 @@ VendingMashine::VendingMashine()        //default ctor
     slotCount = 0;
     maxSize = 0;
     mashine = 0;
-    *mashArr = nullptr;
-    SnackSlot *slt = new SnackSlot();
-    sltSize = slt->getmaxSnc();
+    mashArr = new SnackSlot*();
+    SnackSlot *slt = new SnackSlot();       // получить размер по умолчанию
+    sltSize = slt->getMaxSnc();
+    const SnackSlot  &sltRef = (*slt); 
 }
 VendingMashine::VendingMashine(unsigned short num)      //param ctor
 {
     slotCount = 0;
     maxSize = num;
     mashine = num;
-    mashArr = new Snack*[maxSize];
-    for(int i = 0; i < slotCount; i++)
+    SnackSlot *slt = new SnackSlot();
+    sltSize = slt->getMaxSnc();
+    
+    mashArr = new SnackSlot*[maxSize];
+    for(int i = 0; i < maxSize; i++)
     {
-        Snack *slt = new Snack[sltSize];
-        mashArr[i] = slt;
-        for(int j = 0; j < sltSize; j++)
-            {
-                Snack *snk = new Snack();
-                slt[j] = (*snk); 
-            }
-    }
+        mashArr[i] = new SnackSlot(sltSize);
+    } 
+    SnackSlot const &sltRef = (*mashArr[0]);    
 }
+
 VendingMashine::VendingMashine(const VendingMashine& otherMash)     // copy ctor
 {
     slotCount = otherMash.slotCount;
     maxSize = otherMash.maxSize;
     mashine = otherMash.mashine;
-    mashArr = new Snack* [otherMash.slotCount];
-    for(int i =0; i<otherMash.slotCount; i++)
-    {
-        Snack *slt = new Snack();
-        otherMash.mashArr[i] = slt;
-            for(int j = 0; j< sltSize; j++)
-            {
-                Snack *snk = new Snack();
-                slt[j] = (*snk);
-
-            }
-    }
+    mashArr = new SnackSlot * [maxSize];
+    for (int i = 0; i < maxSize; ++i)
+    { 
+        mashArr[i] = new SnackSlot(otherMash.sltSize);
+        mashArr[i] = otherMash.mashArr[i];
+    }      
 }
 VendingMashine& VendingMashine::operator=(const VendingMashine& _mash)      //owerload operator =
 {
-    if(this == &_mash)
+    if(this != &_mash)
         return *this;
     delete[] mashArr;
     slotCount = _mash.slotCount;
     maxSize = _mash.maxSize;
-    mashArr = new Snack* [_mash.maxSize];
-    for(int i = 0; i <_mash.maxSize; i++)
+    mashine = _mash.mashine;
+    mashArr = new SnackSlot * [maxSize];
+    for (int i = 0; i < maxSize; ++i)
     {
-        Snack *slt = new Snack[sltSize];
-        _mash.mashArr[i] = slt;
-        for(int j = 0; j < sltSize; j++)
-        {
-            Snack *snk = new Snack();
-            slt[j] = (*snk);
-        }
-    }
+        mashArr[i] = new SnackSlot(_mash.sltSize);
+        mashArr[i] = _mash.mashArr[i];
+    }      
     return *this;
 }
 
-unsigned short VendingMashine::getSlotCount()
+unsigned short VendingMashine::getSlotCount()       //get slotCount
 {
     return slotCount;
 }
 
-void addSlot()
+unsigned short VendingMashine::getEmptySlotsCount()  //возвращает кол-во пустых мест
 {
+    unsigned short countAllSlot = 0;
+    for(int i = 0; i < maxSize; i++)
+        countAllSlot += mashArr[i]->getCountLeft();
+    unsigned short total = (maxSize - slotCount)* countAllSlot;
+    return total;
+}
+
+void VendingMashine::printAllSlots()
+{
+    cout << "\n";
+    for(int i = 0; i < maxSize; i++)
+        mashArr[i]->printSlot();     
+}
+
+SnackSlot VendingMashine::getOneSlot(int n)
+{
+    return (*mashArr[n]);
+}
+void VendingMashine::slotAdd(SnackSlot (*sltRef))
+{   
+    mashArr[0] = sltRef;
+    if(mashine != 0)
+    {
+        mashArr[mashine] = sltRef;
+        slotCount++;
+    } 
+    else if((mashine > 0) && (mashine < maxSize))
+    {
+        mashArr[mashine] = sltRef;
+        slotCount++;
+    }
+    else
+        cout << "Автомат запонен!" << endl;
 
 }
+
 VendingMashine::~VendingMashine()
 {
+    for(int i = 0; i <maxSize; i++)
+        delete mashArr[i];
     delete[] mashArr;
 }
