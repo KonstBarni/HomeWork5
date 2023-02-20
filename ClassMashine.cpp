@@ -19,7 +19,7 @@ VendingMashine::VendingMashine(unsigned short num)      //param ctor
 {
     slotCount = 0;
     maxSize = num;
-    mashine = num;
+    mashine = 0;
     SnackSlot *slt = new SnackSlot();
     sltSize = slt->getMaxSnc();
     
@@ -27,8 +27,7 @@ VendingMashine::VendingMashine(unsigned short num)      //param ctor
     for(int i = 0; i < maxSize; i++)
     {
         mashArr[i] = new SnackSlot(sltSize);
-    } 
-    SnackSlot const &sltRef = (*mashArr[0]);    
+    }    
 }
 
 VendingMashine::VendingMashine(const VendingMashine& otherMash)     // copy ctor
@@ -45,7 +44,7 @@ VendingMashine::VendingMashine(const VendingMashine& otherMash)     // copy ctor
 }
 VendingMashine& VendingMashine::operator=(const VendingMashine& _mash)      //owerload operator =
 {
-    if(this != &_mash)
+    if(this == &_mash)
         return *this;
     delete[] mashArr;
     slotCount = _mash.slotCount;
@@ -70,33 +69,34 @@ unsigned short VendingMashine::getEmptySlotsCount()  //возвращает ко
     unsigned short countAllSlot = 0;
     for(int i = 0; i < maxSize; i++)
         countAllSlot += mashArr[i]->getCountLeft();
-    unsigned short total = (maxSize - slotCount)* countAllSlot;
-    return total;
+    return countAllSlot;
 }
 
-void VendingMashine::printAllSlots()
+void VendingMashine::printAllSlots()            // выводит в консоль весь arrMash
 {
     cout << "\n";
     for(int i = 0; i < maxSize; i++)
         mashArr[i]->printSlot();     
 }
 
-SnackSlot VendingMashine::getOneSlot(int n)
+SnackSlot VendingMashine::getOneSlot(int n)     //возвращает один mashArr[n]
 {
     return (*mashArr[n]);
 }
 void VendingMashine::slotAdd(SnackSlot (*sltRef))
 {   
-    mashArr[0] = sltRef;
-    if(mashine != 0)
+
+    if(slotCount == 0)
     {
-        mashArr[mashine] = sltRef;
+        mashArr[mashine]= sltRef;
         slotCount++;
+        mashine++;
     } 
-    else if((mashine > 0) && (mashine < maxSize))
+    else if((slotCount > 0) && (mashine < maxSize))
     {
         mashArr[mashine] = sltRef;
         slotCount++;
+        mashine++;
     }
     else
         cout << "Автомат запонен!" << endl;
@@ -105,7 +105,7 @@ void VendingMashine::slotAdd(SnackSlot (*sltRef))
 
 VendingMashine::~VendingMashine()
 {
-    for(int i = 0; i <maxSize; i++)
-        delete mashArr[i];
+    //for(int i = 0; i <maxSize; i++)       // если удалять из машины, в main будет ошибка памяти
+    //    delete mashArr[i];
     delete[] mashArr;
 }

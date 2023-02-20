@@ -31,14 +31,12 @@ SnackSlot::SnackSlot(const SnackSlot& otherArr)     //конструктор к�
     countLeft = otherArr.countLeft;
     arrSnc = new Snack* [otherArr.maxSnc];
     for(int i =0; i<otherArr.maxSnc; i++)
-    {
         arrSnc[i] = otherArr.arrSnc[i];
-    }
 }
             
 SnackSlot& SnackSlot::operator=(const SnackSlot& _arr)         // перегрузка оператора присваивания
 {
-    if(this != &_arr)
+    if(this == &_arr)
         return *this;
     delete[] arrSnc;
     maxSnc = _arr.maxSnc;
@@ -46,9 +44,7 @@ SnackSlot& SnackSlot::operator=(const SnackSlot& _arr)         // перегру
     countLeft = _arr.countLeft;
     arrSnc = new Snack* [_arr.maxSnc];
     for(int i =0; i<_arr.maxSnc; i++)
-    {
         arrSnc[i] = _arr.arrSnc[i];
-    }
     return *this;
 } 
 
@@ -100,7 +96,7 @@ void SnackSlot::printSlot()             //вывод в консоль всех 
 
 void SnackSlot::printInfo()            //выводит макс. количество снеков и сколько свободно
 {
-    cout <<"Макс. количество снеков: "<< maxSnc << "\t" << "Свободно мест: " << countLeft << endl;
+    cout << "Макс. количество снеков: "<< maxSnc << "\t" << "Свободно мест: " << countLeft << endl;
 }
 
 SnackSlot::~SnackSlot()

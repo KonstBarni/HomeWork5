@@ -20,7 +20,7 @@ public:
     unsigned short getEmptySlotsCount();                        //возвращает кол-во пустых слотов
     SnackSlot getOneSlot(int n);                                //возвращает один слот по номеру
 
-    void printAllSlots();
+    void printAllSlots();                                       //выводит содержимое всех слотов
     void slotAdd(SnackSlot (*SnackSlot));
 
     ~VendingMashine();
